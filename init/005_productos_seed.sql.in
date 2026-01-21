@@ -1,0 +1,40 @@
+-- ============================================================
+-- PRODUCTOS SEED (EXAMPLE)
+-- ============================================================
+-- Demonstrates semantic taxonomy input and automatic
+-- resolution to canonical IDs and SKU generation.
+-- ============================================================
+
+INSERT INTO productos (
+    nombre,
+    marca,
+    descripcion,
+
+    categoria,
+    subcategoria,
+    familia,
+    via_administracion,
+
+    principio_activo,
+    concentracion,
+    forma_farmaceutica,
+
+    pvp,
+    stock
+) VALUES (
+    'Ibuprofeno 600 mg comprimidos',
+    'Genérico',
+    'Analgésico y antiinflamatorio no esteroideo',
+
+    'Medicamentos',
+    'Sistema nervioso',
+    'AINE',
+    'Oral',
+
+    'Ibuprofeno',
+    '600 mg',
+    'Comprimido',
+
+    3.95,
+    120
+);

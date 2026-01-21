@@ -1,0 +1,81 @@
+-- ============================================================
+-- PRODUCT TAXONOMY RESOLUTION & ENFORCEMENT
+-- ============================================================
+
+CREATE OR REPLACE FUNCTION resolve_producto_taxonomy()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Prevent mixed taxonomy input
+    IF (
+        (NEW.categoria_id IS NOT NULL OR
+         NEW.subcategoria_id IS NOT NULL OR
+         NEW.familia_id IS NOT NULL OR
+         NEW.via_administracion_id IS NOT NULL)
+        AND
+        (NEW.categoria IS NOT NULL OR
+         NEW.subcategoria IS NOT NULL OR
+         NEW.familia IS NOT NULL OR
+         NEW.via_administracion IS NOT NULL)
+    ) THEN
+        RAISE EXCEPTION
+            'Provide either taxonomy IDs or semantic taxonomy text, not both';
+    END IF;
+
+    -- Resolve semantic taxonomy if provided
+    IF NEW.categoria IS NOT NULL THEN
+        SELECT id INTO NEW.categoria_id
+        FROM categoria
+        WHERE nombre = NEW.categoria;
+
+        IF NEW.categoria_id IS NULL THEN
+            RAISE EXCEPTION 'Unknown categoria: %', NEW.categoria;
+        END IF;
+    END IF;
+
+    IF NEW.subcategoria IS NOT NULL THEN
+        SELECT id INTO NEW.subcategoria_id
+        FROM subcategoria
+        WHERE nombre = NEW.subcategoria
+          AND categoria_id = NEW.categoria_id;
+
+        IF NEW.subcategoria_id IS NULL THEN
+            RAISE EXCEPTION 'Invalid subcategoria: %', NEW.subcategoria;
+        END IF;
+    END IF;
+
+    IF NEW.familia IS NOT NULL THEN
+        SELECT id INTO NEW.familia_id
+        FROM familia
+        WHERE nombre = NEW.familia
+          AND subcategoria_id = NEW.subcategoria_id;
+
+        IF NEW.familia_id IS NULL THEN
+            RAISE EXCEPTION 'Invalid familia: %', NEW.familia;
+        END IF;
+    END IF;
+
+    IF NEW.via_administracion IS NOT NULL THEN
+        SELECT id INTO NEW.via_administracion_id
+        FROM via_administracion
+        WHERE nombre = NEW.via_administracion;
+
+        IF NEW.via_administracion_id IS NULL THEN
+            RAISE EXCEPTION
+                'Unknown via_administracion: %', NEW.via_administracion;
+        END IF;
+    END IF;
+
+    -- Clear semantic fields after resolution
+    NEW.categoria := NULL;
+    NEW.subcategoria := NULL;
+    NEW.familia := NULL;
+    NEW.via_administracion := NULL;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_003_taxonomy_resolution
+BEFORE INSERT OR UPDATE ON productos
+FOR EACH ROW
+EXECUTE FUNCTION resolve_producto_taxonomy();
