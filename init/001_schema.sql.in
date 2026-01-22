@@ -30,9 +30,12 @@ CREATE TABLE subcategoria (
 
     PRIMARY KEY (categoria_id, id),
 
-    UNIQUE (categoria_id, lower(nombre)),
     UNIQUE (categoria_id, abbreviation)
 );
+
+-- Case-insensitive uniqueness for subcategoria.nombre
+CREATE UNIQUE INDEX subcategoria_nombre_ci
+    ON subcategoria (categoria_id, lower(nombre));
 
 -- ============================================================
 -- TAXONOMY: FAMILIA
@@ -56,9 +59,12 @@ CREATE TABLE familia (
         REFERENCES subcategoria(categoria_id, id)
         ON DELETE CASCADE,
 
-    UNIQUE (categoria_id, subcategoria_id, lower(nombre)),
     UNIQUE (categoria_id, subcategoria_id, abbreviation)
 );
+
+-- Case-insensitive uniqueness for familia.nombre
+CREATE UNIQUE INDEX familia_nombre_ci
+    ON familia (categoria_id, subcategoria_id, lower(nombre));
 
 -- ============================================================
 -- TAXONOMY: VÍA DE ADMINISTRACIÓN
