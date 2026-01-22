@@ -21,11 +21,16 @@ CREATE TABLE categoria (
 -- ============================================================
 
 CREATE TABLE subcategoria (
-    id INTEGER PRIMARY KEY,
-    categoria_id INTEGER NOT NULL REFERENCES categoria(id) ON DELETE CASCADE,
+    id INTEGER NOT NULL,
+    categoria_id INTEGER NOT NULL
+        REFERENCES categoria(id) ON DELETE CASCADE,
     nombre TEXT NOT NULL,
-    abbreviation TEXT NOT NULL,
-    UNIQUE (categoria_id, nombre),
+    abbreviation TEXT NOT NULL
+        CHECK (abbreviation = upper(abbreviation)),
+
+    PRIMARY KEY (categoria_id, id),
+
+    UNIQUE (categoria_id, lower(nombre)),
     UNIQUE (categoria_id, abbreviation)
 );
 
@@ -38,12 +43,21 @@ CREATE TABLE subcategoria (
 -- ============================================================
 
 CREATE TABLE familia (
-    id INTEGER PRIMARY KEY,
-    subcategoria_id INTEGER NOT NULL REFERENCES subcategoria(id) ON DELETE CASCADE,
+    id INTEGER NOT NULL,
+    categoria_id INTEGER NOT NULL,
+    subcategoria_id INTEGER NOT NULL,
     nombre TEXT NOT NULL,
-    abbreviation TEXT NOT NULL,
-    UNIQUE (subcategoria_id, nombre),
-    UNIQUE (subcategoria_id, abbreviation)
+    abbreviation TEXT NOT NULL
+        CHECK (abbreviation = upper(abbreviation)),
+
+    PRIMARY KEY (categoria_id, subcategoria_id, id),
+
+    FOREIGN KEY (categoria_id, subcategoria_id)
+        REFERENCES subcategoria(categoria_id, id)
+        ON DELETE CASCADE,
+
+    UNIQUE (categoria_id, subcategoria_id, lower(nombre)),
+    UNIQUE (categoria_id, subcategoria_id, abbreviation)
 );
 
 -- ============================================================
