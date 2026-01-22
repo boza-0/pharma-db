@@ -91,7 +91,7 @@ $$ LANGUAGE plpgsql;
 -- SKU GENERATION TRIGGER
 -- ------------------------------------------------------------
 
-CREATE TRIGGER trg_004_01_generate_sku
+CREATE TRIGGER trg_003_01_generate_sku
 BEFORE INSERT ON productos
 FOR EACH ROW
 EXECUTE FUNCTION generate_sku();
@@ -116,7 +116,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE TRIGGER trg_004_02_prevent_sku_update
+CREATE TRIGGER trg_003_02_prevent_sku_update
 BEFORE UPDATE ON productos
 FOR EACH ROW
 EXECUTE FUNCTION prevent_sku_update();

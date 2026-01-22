@@ -64,11 +64,12 @@ CREATE TABLE via_administracion (
 -- CORE ENTITY: PRODUCTOS
 -- ------------------------------------------------------------
 -- Canonical representation of commercial products.
--- Combines resolved taxonomy (IDs) with optional semantic
--- input (text) for AI or human seeding.
+-- Stores resolved taxonomy references (IDs) enforced
+-- by database-level hierarchical constraints.
 --
 -- This table represents authoritative product identity
--- after validation and resolution of classification.
+-- after structural validation of the full taxonomy line
+-- (categoría → subcategoría → familia → vía).
 -- ============================================================
 
 CREATE TABLE productos (
@@ -77,16 +78,23 @@ CREATE TABLE productos (
     sku TEXT UNIQUE,
 
     -- 2. CANONICAL CLASSIFICATION (RESOLVED TRUTH)
-    categoria_id INTEGER NOT NULL REFERENCES categoria(id),
-    subcategoria_id INTEGER NOT NULL REFERENCES subcategoria(id),
-    familia_id INTEGER NOT NULL REFERENCES familia(id),
+    categoria_id INTEGER NOT NULL,
+    subcategoria_id INTEGER NOT NULL,
+    familia_id INTEGER NOT NULL,
     via_administracion_id INTEGER NOT NULL REFERENCES via_administracion(id),
 
-    -- 3. SEMANTIC TAXONOMY INPUT (AI / HUMAN)
-    categoria TEXT,
-    subcategoria TEXT,
-    familia TEXT,
-    via_administracion TEXT,
+    -- Enforce taxonomy hierarchy
+    CONSTRAINT productos_categoria_fk
+        FOREIGN KEY (categoria_id)
+        REFERENCES categoria(id),
+
+    CONSTRAINT productos_categoria_subcategoria_fk
+        FOREIGN KEY (subcategoria_id, categoria_id)
+        REFERENCES subcategoria(id, categoria_id),
+
+    CONSTRAINT productos_subcategoria_familia_fk
+        FOREIGN KEY (familia_id, subcategoria_id)
+        REFERENCES familia(id, subcategoria_id),
 
     -- 4. COMMERCIAL PRESENTATION
     marca TEXT,
