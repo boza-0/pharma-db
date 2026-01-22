@@ -6,35 +6,42 @@
 -- ============================================================
 
 INSERT INTO productos (
-    nombre,
-    marca,
-    descripcion,
+  categoria_id,
+  subcategoria_id,
+  familia_id,
+  via_administracion_id,
 
-    categoria,
-    subcategoria,
-    familia,
-    via_administracion,
+  marca,
+  nombre,
+  unidades_por_envase,
 
-    principio_activo,
-    concentracion,
-    forma_farmaceutica,
+  principio_activo,
+  concentracion,
+  forma_farmaceutica,
 
-    pvp,
-    stock
-) VALUES (
-    'Ibuprofeno 600 mg comprimidos',
-    'Genérico',
-    'Analgésico y antiinflamatorio no esteroideo',
+  sustancia_controlada,
+  requiere_serializacion,
 
-    'Medicamentos',
-    'Sistema nervioso',
-    'AINE',
-    'Oral',
+  pvp,
+  stock
+)
+VALUES (
+  1,      -- Medicamentos
+  101,    -- Sistema nervioso
+  1004,   -- Antiepiléptico (AEP)
+  1,      -- Oral
 
-    'Ibuprofeno',
-    '600 mg',
-    'Comprimido',
+  'Pfizer',
+  'Neuroval',
+  50,     -- unidades por envase (box of 50)
 
-    3.95,
-    120
+  'Ácido valproico',
+  '500 mg',
+  'Comprimidos recubiertos',
+
+  false,
+  false,
+
+  12.95,
+  150
 );

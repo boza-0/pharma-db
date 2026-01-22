@@ -99,7 +99,8 @@ CREATE TABLE productos (
     -- 4. COMMERCIAL PRESENTATION
     marca TEXT,
     nombre TEXT NOT NULL,
-    descripcion TEXT,
+    unidades_por_envase INTEGER NOT NULL,
+    comentarios TEXT,
     foto_url TEXT,
 
     -- 5. PHARMACEUTICAL DEFINITION
@@ -115,3 +116,4 @@ CREATE TABLE productos (
     pvp NUMERIC(10,2),
     stock INTEGER NOT NULL DEFAULT 0
 );
+
