@@ -101,20 +101,22 @@ CREATE TABLE productos (
     categoria_id INTEGER NOT NULL,
     subcategoria_id INTEGER NOT NULL,
     familia_id INTEGER NOT NULL,
-    via_administracion_id INTEGER NOT NULL REFERENCES via_administracion(id),
+    via_administracion_id INTEGER NOT NULL
+        REFERENCES via_administracion(id),
 
     -- Enforce taxonomy hierarchy
+
     CONSTRAINT productos_categoria_fk
         FOREIGN KEY (categoria_id)
         REFERENCES categoria(id),
 
     CONSTRAINT productos_categoria_subcategoria_fk
-        FOREIGN KEY (subcategoria_id, categoria_id)
-        REFERENCES subcategoria(id, categoria_id),
+        FOREIGN KEY (categoria_id, subcategoria_id)
+        REFERENCES subcategoria(categoria_id, id),
 
-    CONSTRAINT productos_subcategoria_familia_fk
-        FOREIGN KEY (familia_id, subcategoria_id)
-        REFERENCES familia(id, subcategoria_id),
+    CONSTRAINT productos_categoria_subcategoria_familia_fk
+        FOREIGN KEY (categoria_id, subcategoria_id, familia_id)
+        REFERENCES familia(categoria_id, subcategoria_id, id),
 
     -- 4. COMMERCIAL PRESENTATION
     marca TEXT,
@@ -136,4 +138,3 @@ CREATE TABLE productos (
     pvp NUMERIC(10,2),
     stock INTEGER NOT NULL DEFAULT 0
 );
-
