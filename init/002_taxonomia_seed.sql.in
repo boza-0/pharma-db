@@ -75,190 +75,208 @@ INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VA
 (1, 105, 1030, 'Corticoide sistémico', 'CORT_S'),
 (1, 105, 1031, 'Anticonceptivo hormonal', 'ACH');
 
-
 -- 1.6 Antiinfecciosos
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(106, 1, 'Antiinfecciosos', 'INF');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1032, 106, 'Antibiótico sistémico', 'AB_S'),
-(1033, 106, 'Antibiótico tópico', 'AB_T'),
-(1034, 106, 'Antifúngico sistémico', 'AF_S'),
-(1035, 106, 'Antifúngico tópico', 'AF_T'),
-(1036, 106, 'Antiviral', 'AV'),
-(1037, 106, 'Antiparasitario', 'APAR');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 106, 'Antiinfecciosos', 'INF');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 106, 1032, 'Antibiótico sistémico', 'AB_S'),
+(1, 106, 1033, 'Antibiótico tópico', 'AB_T'),
+(1, 106, 1034, 'Antifúngico sistémico', 'AF_S'),
+(1, 106, 1035, 'Antifúngico tópico', 'AF_T'),
+(1, 106, 1036, 'Antiviral', 'AV'),
+(1, 106, 1037, 'Antiparasitario', 'APAR');
 
 -- 1.7 Dermatología
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(107, 1, 'Dermatología', 'DERM');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1038, 107, 'Corticoide tópico', 'CORT_T'),
-(1039, 107, 'Antifúngico tópico', 'AF_T'),
-(1040, 107, 'Antibiótico tópico', 'AB_T'),
-(1041, 107, 'Emoliente', 'EMOL'),
-(1042, 107, 'Tratamiento acné', 'ACNE'),
-(1043, 107, 'Tratamiento psoriasis', 'PSOR');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 107, 'Dermatología', 'DERM');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 107, 1038, 'Corticoide tópico', 'CORT_T'),
+(1, 107, 1039, 'Antifúngico tópico', 'AF_T'),
+(1, 107, 1040, 'Antibiótico tópico', 'AB_T'),
+(1, 107, 1041, 'Emoliente', 'EMOL'),
+(1, 107, 1042, 'Tratamiento acné', 'ACNE'),
+(1, 107, 1043, 'Tratamiento psoriasis', 'PSOR');
 
 -- 1.8 Oftalmología
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(108, 1, 'Oftalmología', 'OFT');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1044, 108, 'Antibiótico oftálmico', 'AB_OFT'),
-(1045, 108, 'Antiinflamatorio oftálmico', 'AI_OFT'),
-(1046, 108, 'Antialérgico oftálmico', 'AA_OFT'),
-(1047, 108, 'Lágrima artificial', 'LAGR');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 108, 'Oftalmología', 'OFT');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 108, 1044, 'Antibiótico oftálmico', 'AB_OFT'),
+(1, 108, 1045, 'Antiinflamatorio oftálmico', 'AI_OFT'),
+(1, 108, 1046, 'Antialérgico oftálmico', 'AA_OFT'),
+(1, 108, 1047, 'Lágrima artificial', 'LAGR');
 
 -- 1.9 Otorrinolaringología
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(109, 1, 'Otorrinolaringología', 'ORL');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1048, 109, 'Antiinflamatorio ótico', 'AI_OT'),
-(1049, 109, 'Antibiótico ótico', 'AB_OT'),
-(1050, 109, 'Cerumenolítico', 'CERU');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 109, 'Otorrinolaringología', 'ORL');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 109, 1048, 'Antiinflamatorio ótico', 'AI_OT'),
+(1, 109, 1049, 'Antibiótico ótico', 'AB_OT'),
+(1, 109, 1050, 'Cerumenolítico', 'CERU');
 
 -- 1.10 Urología
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(110, 1, 'Urología', 'URO');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1051, 110, 'Antiséptico urinario', 'ANT_UR'),
-(1052, 110, 'Antiespasmódico urinario', 'ESP_UR'),
-(1053, 110, 'Tratamiento HBP', 'HBP');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 110, 'Urología', 'URO');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 110, 1051, 'Antiséptico urinario', 'ANT_UR'),
+(1, 110, 1052, 'Antiespasmódico urinario', 'ESP_UR'),
+(1, 110, 1053, 'Tratamiento HBP', 'HBP');
 
 -- 1.11 Ginecología
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(111, 1, 'Ginecología', 'GIN');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1054, 111, 'Antifúngico vaginal', 'AF_VAG'),
-(1055, 111, 'Antiséptico vaginal', 'ANT_VAG'),
-(1056, 111, 'Terapia hormonal', 'TH');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 111, 'Ginecología', 'GIN');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 111, 1054, 'Antifúngico vaginal', 'AF_VAG'),
+(1, 111, 1055, 'Antiséptico vaginal', 'ANT_VAG'),
+(1, 111, 1056, 'Terapia hormonal', 'TH');
 
 -- ============================
 -- 2. PARAFARMACIA
 -- ============================
 
 -- 2.1 Dermocosmética
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(201, 2, 'Dermocosmética', 'DERMO');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(2001, 201, 'Hidratación', 'HIDR'),
-(2002, 201, 'Antiedad', 'ANTIAGE'),
-(2003, 201, 'Limpieza facial', 'LIMP'),
-(2004, 201, 'Fotoprotección', 'FOTO'),
-(2005, 201, 'Cuidado corporal', 'CORP'),
-(2006, 201, 'Cuidado capilar', 'CAP');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(2, 201, 'Dermocosmética', 'DERMO');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(2, 201, 2001, 'Hidratación', 'HIDR'),
+(2, 201, 2002, 'Antiedad', 'ANTIAGE'),
+(2, 201, 2003, 'Limpieza facial', 'LIMP'),
+(2, 201, 2004, 'Fotoprotección', 'FOTO'),
+(2, 201, 2005, 'Cuidado corporal', 'CORP'),
+(2, 201, 2006, 'Cuidado capilar', 'CAP');
 
 -- 2.2 Higiene
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(202, 2, 'Higiene', 'HIG');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(2007, 202, 'Higiene bucodental', 'BUCO'),
-(2008, 202, 'Higiene corporal', 'CORP'),
-(2009, 202, 'Higiene íntima', 'INT'),
-(2010, 202, 'Higiene capilar', 'CAP');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(2, 202, 'Higiene', 'HIG');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(2, 202, 2007, 'Higiene bucodental', 'BUCO'),
+(2, 202, 2008, 'Higiene corporal', 'CORP'),
+(2, 202, 2009, 'Higiene íntima', 'INT'),
+(2, 202, 2010, 'Higiene capilar', 'CAP');
 
 -- 2.3 Infantil
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(203, 2, 'Infantil', 'INFANT');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(2011, 203, 'Alimentación infantil', 'ALIM_INF'),
-(2012, 203, 'Higiene infantil', 'HIG_INF'),
-(2013, 203, 'Dermatitis del pañal', 'PANAL'),
-(2014, 203, 'Accesorios infantiles', 'ACC_INF');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(2, 203, 'Infantil', 'INFANT');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(2, 203, 2011, 'Alimentación infantil', 'ALIM_INF'),
+(2, 203, 2012, 'Higiene infantil', 'HIG_INF'),
+(2, 203, 2013, 'Dermatitis del pañal', 'PANAL'),
+(2, 203, 2014, 'Accesorios infantiles', 'ACC_INF');
 
 -- 2.4 Ortopedia
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(204, 2, 'Ortopedia', 'ORTO');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(2015, 204, 'Faja', 'FAJA'),
-(2016, 204, 'Rodillera', 'ROD'),
-(2017, 204, 'Muñequera', 'MUNE'),
-(2018, 204, 'Plantilla', 'PLAN');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(2, 204, 'Ortopedia', 'ORTO');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(2, 204, 2015, 'Faja', 'FAJA'),
+(2, 204, 2016, 'Rodillera', 'ROD'),
+(2, 204, 2017, 'Muñequera', 'MUNE'),
+(2, 204, 2018, 'Plantilla', 'PLAN');
 
 -- 2.5 Dietética y Nutrición
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(205, 2, 'Dietética y nutrición', 'NUT');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(2019, 205, 'Vitamina', 'VIT'),
-(2020, 205, 'Mineral', 'MIN'),
-(2021, 205, 'Complemento deportivo', 'DEP'),
-(2022, 205, 'Control de peso', 'PESO');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(2, 205, 'Dietética y nutrición', 'NUT');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(2, 205, 2019, 'Vitamina', 'VIT'),
+(2, 205, 2020, 'Mineral', 'MIN'),
+(2, 205, 2021, 'Complemento deportivo', 'DEP'),
+(2, 205, 2022, 'Control de peso', 'PESO');
 
 -- 2.6 Salud Sexual
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(206, 2, 'Salud sexual', 'SEX');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(2023, 206, 'Preservativo', 'PRES'),
-(2024, 206, 'Lubricante', 'LUB'),
-(2025, 206, 'Test de embarazo', 'TEST_EMB'),
-(2026, 206, 'Test de ovulación', 'TEST_OV');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(2, 206, 'Salud sexual', 'SEX');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(2, 206, 2023, 'Preservativo', 'PRES'),
+(2, 206, 2024, 'Lubricante', 'LUB'),
+(2, 206, 2025, 'Test de embarazo', 'TEST_EMB'),
+(2, 206, 2026, 'Test de ovulación', 'TEST_OV');
 
 -- 2.7 Veterinaria
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(207, 2, 'Veterinaria', 'VET');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(2027, 207, 'Antiparasitario veterinario', 'AP_VET'),
-(2028, 207, 'Higiene veterinaria', 'HIG_VET'),
-(2029, 207, 'Alimentación veterinaria', 'ALIM_VET');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(2, 207, 'Veterinaria', 'VET');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(2, 207, 2027, 'Antiparasitario veterinario', 'AP_VET'),
+(2, 207, 2028, 'Higiene veterinaria', 'HIG_VET'),
+(2, 207, 2029, 'Alimentación veterinaria', 'ALIM_VET');
 
 -- ============================
 -- 3. PRODUCTOS SANITARIOS
 -- ============================
 
 -- 3.1 Diagnóstico
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(301, 3, 'Diagnóstico', 'DIAG');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(3001, 301, 'Test de glucosa', 'TEST_GLU'),
-(3002, 301, 'Test de embarazo', 'TEST_EMB'),
-(3003, 301, 'Test COVID', 'TEST_COV'),
-(3004, 301, 'Tensiómetro', 'TENS'),
-(3005, 301, 'Termómetro', 'TERM');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(3, 301, 'Diagnóstico', 'DIAG');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(3, 301, 3001, 'Test de glucosa', 'TEST_GLU'),
+(3, 301, 3002, 'Test de embarazo', 'TEST_EMB'),
+(3, 301, 3003, 'Test COVID', 'TEST_COV'),
+(3, 301, 3004, 'Tensiómetro', 'TENS'),
+(3, 301, 3005, 'Termómetro', 'TERM');
 
 -- 3.2 Vendaje y cura
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(302, 3, 'Vendaje y cura', 'VEND');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(3006, 302, 'Gasa', 'GASA'),
-(3007, 302, 'Apósito', 'APOS'),
-(3008, 302, 'Antiséptico', 'ANTIS'),
-(3009, 302, 'Tirita', 'TIR'),
-(3010, 302, 'Esparadrapo', 'ESP');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(3, 302, 'Vendaje y cura', 'VEND');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(3, 302, 3006, 'Gasa', 'GASA'),
+(3, 302, 3007, 'Apósito', 'APOS'),
+(3, 302, 3008, 'Antiséptico', 'ANTIS'),
+(3, 302, 3009, 'Tirita', 'TIR'),
+(3, 302, 3010, 'Esparadrapo', 'ESP');
 
 -- 3.3 Incontinencia
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(303, 3, 'Incontinencia', 'INCON');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(3011, 303, 'Compresa', 'COMP'),
-(3012, 303, 'Braguita absorbente', 'BRAG'),
-(3013, 303, 'Empapador', 'EMP');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(3, 303, 'Incontinencia', 'INCON');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(3, 303, 3011, 'Compresa', 'COMP'),
+(3, 303, 3012, 'Braguita absorbente', 'BRAG'),
+(3, 303, 3013, 'Empapador', 'EMP');
 
 -- 3.4 Material clínico
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(304, 3, 'Material clínico', 'MAT');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(3014, 304, 'Jeringa', 'JER'),
-(3015, 304, 'Aguja', 'AGU'),
-(3016, 304, 'Guante', 'GUA'),
-(3017, 304, 'Mascarilla', 'MASK');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(3, 304, 'Material clínico', 'MAT');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(3, 304, 3014, 'Jeringa', 'JER'),
+(3, 304, 3015, 'Aguja', 'AGU'),
+(3, 304, 3016, 'Guante', 'GUA'),
+(3, 304, 3017, 'Mascarilla', 'MASK');
 
 -- ============================
 -- 4. FITOTERAPIA
 -- ============================
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(401, 4, 'Fitoterapia', 'FIT');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(4001, 401, 'Planta medicinal', 'PLANT'),
-(4002, 401, 'Extracto vegetal', 'EXT'),
-(4003, 401, 'Jarabe natural', 'JAR');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(4, 401, 'Fitoterapia', 'FIT');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(4, 401, 4001, 'Planta medicinal', 'PLANT'),
+(4, 401, 4002, 'Extracto vegetal', 'EXT'),
+(4, 401, 4003, 'Jarabe natural', 'JAR');
 
 -- ============================
 -- 5. HOMEOPATÍA
 -- ============================
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(501, 5, 'Homeopatía', 'HOM');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(5001, 501, 'Gránulo', 'GRAN'),
-(5002, 501, 'Gota', 'GOTA'),
-(5003, 501, 'Compuesto homeopático', 'COMP_HOM');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(5, 501, 'Homeopatía', 'HOM');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(5, 501, 5001, 'Gránulo', 'GRAN'),
+(5, 501, 5002, 'Gota', 'GOTA'),
+(5, 501, 5003, 'Compuesto homeopático', 'COMP_HOM');
 
 -- ============================
 -- VÍAS DE ADMINISTRACIÓN
