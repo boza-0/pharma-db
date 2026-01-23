@@ -16,7 +16,7 @@ for f in /docker-entrypoint-initdb.d/*.sql.in; do
         -U "$POSTGRES_USER" \
         -d "$POSTGRES_DB" \
         -f "$f" >> "$LOG" 2>&1; then
-        echo "SUCCESS: $f" | tee -a "$LOG"
+        echo "SUCCESS"
     else
         echo "FAILED: $f" | tee -a "$LOG"
         echo "=== Initialization aborted due to failure ===" | tee -a "$LOG"
