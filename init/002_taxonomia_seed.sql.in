@@ -15,60 +15,66 @@ INSERT INTO categoria (id, nombre, abbreviation) VALUES
 -- 1. MEDICAMENTOS
 
 -- 1.1 Sistema Nervioso
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(101, 1, 'Sistema nervioso', 'SN');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1001, 101, 'Analgésico', 'ANALG'),
-(1002, 101, 'AINE', 'AINE'),
-(1003, 101, 'Opioide', 'OPIO'),
-(1004, 101, 'Antiepiléptico', 'AEP'),
-(1005, 101, 'Antiparkinsoniano', 'APARK'),
-(1006, 101, 'Ansiolítico', 'ANX'),
-(1007, 101, 'Antidepresivo', 'ADP'),
-(1008, 101, 'Antipsicótico', 'APS'),
-(1009, 101, 'Hipnótico', 'HIPN');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 101, 'Sistema nervioso', 'SN');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 101, 1001, 'Analgésico', 'ANALG'),
+(1, 101, 1002, 'AINE', 'AINE'),
+(1, 101, 1003, 'Opioide', 'OPIO'),
+(1, 101, 1004, 'Antiepiléptico', 'AEP'),
+(1, 101, 1005, 'Antiparkinsoniano', 'APARK'),
+(1, 101, 1006, 'Ansiolítico', 'ANX'),
+(1, 101, 1007, 'Antidepresivo', 'ADP'),
+(1, 101, 1008, 'Antipsicótico', 'APS'),
+(1, 101, 1009, 'Hipnótico', 'HIPN');
 
 -- 1.2 Sistema Cardiovascular
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(102, 1, 'Sistema cardiovascular', 'CV');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1010, 102, 'Antihipertensivo', 'HTA'),
-(1011, 102, 'Diurético', 'DIUR'),
-(1012, 102, 'Antiarrítmico', 'AARR'),
-(1013, 102, 'Anticoagulante', 'ACOAG'),
-(1014, 102, 'Antiagregante', 'AAG'),
-(1015, 102, 'Hipolipemiante', 'HIPO');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 102, 'Sistema cardiovascular', 'CV');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 102, 1010, 'Antihipertensivo', 'HTA'),
+(1, 102, 1011, 'Diurético', 'DIUR'),
+(1, 102, 1012, 'Antiarrítmico', 'AARR'),
+(1, 102, 1013, 'Anticoagulante', 'ACOAG'),
+(1, 102, 1014, 'Antiagregante', 'AAG'),
+(1, 102, 1015, 'Hipolipemiante', 'HIPO');
 
 -- 1.3 Sistema Respiratorio
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(103, 1, 'Sistema respiratorio', 'RESP');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1016, 103, 'Antihistamínico', 'AHIST'),
-(1017, 103, 'Descongestivo', 'DESCON'),
-(1018, 103, 'Antitusivo', 'ATUS'),
-(1019, 103, 'Mucolítico', 'MUCO'),
-(1020, 103, 'Broncodilatador', 'BRON'),
-(1021, 103, 'Corticoide inhalado', 'CORT_INH');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 103, 'Sistema respiratorio', 'RESP');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 103, 1016, 'Antihistamínico', 'AHIST'),
+(1, 103, 1017, 'Descongestivo', 'DESCON'),
+(1, 103, 1018, 'Antitusivo', 'ATUS'),
+(1, 103, 1019, 'Mucolítico', 'MUCO'),
+(1, 103, 1020, 'Broncodilatador', 'BRON'),
+(1, 103, 1021, 'Corticoide inhalado', 'CORT_INH');
 
 -- 1.4 Sistema Digestivo
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(104, 1, 'Sistema digestivo', 'DIG');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1022, 104, 'Antiácido', 'ANTIAC'),
-(1023, 104, 'IBP', 'IBP'),
-(1024, 104, 'Antiemético', 'ANTIEM'),
-(1025, 104, 'Antidiarreico', 'ANTID'),
-(1026, 104, 'Laxante', 'LAX'),
-(1027, 104, 'Antiespasmódico', 'ANTIESP');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 104, 'Sistema digestivo', 'DIG');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 104, 1022, 'Antiácido', 'ANTIAC'),
+(1, 104, 1023, 'IBP', 'IBP'),
+(1, 104, 1024, 'Antiemético', 'ANTIEM'),
+(1, 104, 1025, 'Antidiarreico', 'ANTID'),
+(1, 104, 1026, 'Laxante', 'LAX'),
+(1, 104, 1027, 'Antiespasmódico', 'ANTIESP');
 
 -- 1.5 Sistema Endocrino
-INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
-(105, 1, 'Sistema endocrino', 'ENDO');
-INSERT INTO familia (id, subcategoria_id, nombre, abbreviation) VALUES
-(1028, 105, 'Antidiabético', 'ADIA'),
-(1029, 105, 'Hormona tiroidea', 'HTIR'),
-(1030, 105, 'Corticoide sistémico', 'CORT_S'),
-(1031, 105, 'Anticonceptivo hormonal', 'ACH');
+INSERT INTO subcategoria (categoria_id, id, nombre, abbreviation) VALUES
+(1, 105, 'Sistema endocrino', 'ENDO');
+
+INSERT INTO familia (categoria_id, subcategoria_id, id, nombre, abbreviation) VALUES
+(1, 105, 1028, 'Antidiabético', 'ADIA'),
+(1, 105, 1029, 'Hormona tiroidea', 'HTIR'),
+(1, 105, 1030, 'Corticoide sistémico', 'CORT_S'),
+(1, 105, 1031, 'Anticonceptivo hormonal', 'ACH');
+
 
 -- 1.6 Antiinfecciosos
 INSERT INTO subcategoria (id, categoria_id, nombre, abbreviation) VALUES
