@@ -48,13 +48,6 @@ JOIN familia f ON p.familia_id = f.id
 JOIN via_administracion v ON p.via_administracion_id = v.id;
 ```
 
-### Confirm semantic fields were cleared
-
-```sql 
-SELECT categoria, subcategoria, familia, via_administracion
-FROM productos;
-``` 
-
 ### Exit the database
 
 ```sql 
