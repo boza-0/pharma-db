@@ -1,0 +1,30 @@
+INSERT INTO productos (
+  categoria_id,
+  subcategoria_id,
+  familia_id,
+  via_administracion_id,
+  marca,
+  nombre,
+  unidades_por_envase,
+  principio_activo,
+  concentracion,
+  forma_farmaceutica,
+  sustancia_controlada,
+  requiere_serializacion,
+  pvp,
+  stock
+)
+VALUES
+(1,101,1001,1,'Cinfa','Paracetamol Cinfa',20,'Paracetamol','500 mg','Comprimidos',false,false,1.95,320),
+(1,101,1001,1,'Kern Pharma','Paracetamol Kern Pharma',40,'Paracetamol','650 mg','Comprimidos',false,false,3.20,180),
+(1,101,1001,1,'Ferrer','Gelocatil',10,'Paracetamol','1 g','Comprimidos',false,false,3.95,95),
+(1,101,1001,1,'Normon','Paracetamol Normon',20,'Paracetamol','500 mg','Granulado para solución oral',false,false,2.85,140),
+(1,101,1001,1,'Cinfa','Ibuprofeno Cinfa',30,'Ibuprofeno','400 mg','Comprimidos',false,false,2.40,260),
+(1,101,1001,1,'Normon','Ibuprofeno Normon',40,'Ibuprofeno','600 mg','Comprimidos',false,false,3.60,210),
+(1,101,1001,1,'Zambon','Espidifen',20,'Ibuprofeno arginina','400 mg','Granulado para solución oral',false,false,4.95,120),
+(1,101,1001,1,'Boehringer Ingelheim','Nolotil',20,'Metamizol magnésico','575 mg','Cápsulas',false,false,4.85,160),
+(1,101,1001,1,'Normon','Metamizol Normon',50,'Metamizol magnésico','575 mg','Cápsulas',false,false,6.20,110),
+(1,101,1001,1,'Bayer','Aspirina',20,'Ácido acetilsalicílico','500 mg','Comprimidos',false,false,3.50,90),
+(1,101,1001,1,'Bayer','Aspirina C',10,'Ácido acetilsalicílico','500 mg','Comprimidos efervescentes',false,false,4.20,75),
+(1,101,1001,1,'Menarini','Enantyum',20,'Dexketoprofeno','25 mg','Comprimidos',false,false,6.90,130),
+(1,101,1001,1,'Almirall','Algidol',20,'Paracetamol + Codeína','500 mg + 30 mg','Comprimidos',true,true,5.80,60);
