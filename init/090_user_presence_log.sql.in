@@ -1,0 +1,14 @@
+-- ============================================================
+-- USER PRESENCE LOG
+-- ------------------------------------------------------------
+-- Append-only log of user navigation presence.
+-- Records where a user was (URL) at a given point in time.
+-- This table is intentionally minimal and interpretation-free.
+-- ============================================================
+
+CREATE TABLE user_presence_log (
+    id SERIAL PRIMARY KEY,
+    timestamp TIMESTAMP NOT NULL DEFAULT now(),
+    user_id INTEGER NOT NULL,
+    url TEXT NOT NULL
+);
