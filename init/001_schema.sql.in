@@ -1,140 +1,49 @@
--- ============================================================
--- TAXONOMY: CATEGORÍA
--- ------------------------------------------------------------
--- Top-level regulatory and commercial classification.
--- Represents the highest semantic grouping of products
--- (e.g. Medicamentos, Cosmética, Productos sanitarios).
--- ============================================================
-
 CREATE TABLE categoria (
     id INTEGER PRIMARY KEY,
     nombre TEXT NOT NULL UNIQUE,
-    abbreviation TEXT NOT NULL UNIQUE
+    abreviatura TEXT NOT NULL UNIQUE
 );
-
--- ============================================================
--- TAXONOMY: SUBCATEGORÍA
--- ------------------------------------------------------------
--- Second-level classification scoped to a categoría.
--- Represents therapeutic or functional groupings
--- meaningful to pharmacists and regulation.
--- ============================================================
 
 CREATE TABLE subcategoria (
-    id INTEGER NOT NULL,
-    categoria_id INTEGER NOT NULL
-        REFERENCES categoria(id) ON DELETE CASCADE,
+    id INTEGER PRIMARY KEY,
     nombre TEXT NOT NULL,
-    abbreviation TEXT NOT NULL
-        CHECK (abbreviation = upper(abbreviation)),
-
-    PRIMARY KEY (categoria_id, id),
-
-    UNIQUE (categoria_id, abbreviation)
+    abreviatura TEXT NOT NULL,
+    categoria_id INTEGER NOT NULL REFERENCES categoria(id)
 );
-
--- Case-insensitive uniqueness for subcategoria.nombre
-CREATE UNIQUE INDEX subcategoria_nombre_ci
-    ON subcategoria (categoria_id, lower(nombre));
-
--- ============================================================
--- TAXONOMY: FAMILIA
--- ------------------------------------------------------------
--- Third-level classification scoped to a subcategoría.
--- Represents fine-grained product families used for
--- navigation, analytics, and SKU semantics.
--- ============================================================
 
 CREATE TABLE familia (
-    id INTEGER NOT NULL,
-    categoria_id INTEGER NOT NULL,
-    subcategoria_id INTEGER NOT NULL,
+    id INTEGER PRIMARY KEY,
     nombre TEXT NOT NULL,
-    abbreviation TEXT NOT NULL
-        CHECK (abbreviation = upper(abbreviation)),
-
-    PRIMARY KEY (categoria_id, subcategoria_id, id),
-
-    FOREIGN KEY (categoria_id, subcategoria_id)
-        REFERENCES subcategoria(categoria_id, id)
-        ON DELETE CASCADE,
-
-    UNIQUE (categoria_id, subcategoria_id, abbreviation)
+    abreviatura TEXT NOT NULL,
+    subcategoria_id INTEGER NOT NULL REFERENCES subcategoria(id)
 );
 
--- Case-insensitive uniqueness for familia.nombre
-CREATE UNIQUE INDEX familia_nombre_ci
-    ON familia (categoria_id, subcategoria_id, lower(nombre));
-
--- ============================================================
--- TAXONOMY: VÍA DE ADMINISTRACIÓN
--- ------------------------------------------------------------
--- Canonical list of administration routes.
--- Used for regulatory validation, logistics constraints,
--- and SKU derivation.
--- ============================================================
-
-CREATE TABLE via_administracion (
+CREATE TABLE via (
     id INTEGER PRIMARY KEY,
     nombre TEXT NOT NULL UNIQUE,
-    abbreviation TEXT NOT NULL UNIQUE
+    abreviatura TEXT NOT NULL UNIQUE
 );
 
--- ============================================================
--- CORE ENTITY: PRODUCTOS
--- ------------------------------------------------------------
--- Canonical representation of commercial products.
--- Stores resolved taxonomy references (IDs) enforced
--- by database-level hierarchical constraints.
---
--- This table represents authoritative product identity
--- after structural validation of the full taxonomy line
--- (categoría → subcategoría → familia → vía).
--- ============================================================
-
 CREATE TABLE productos (
-    -- 1. TECHNICAL IDENTITY
+    
     id SERIAL PRIMARY KEY,
-    sku TEXT UNIQUE,
+    sku TEXT NOT NULL UNIQUE,
+    familia_id INTEGER NOT NULL REFERENCES familia(id),
+    via_id INTEGER NOT NULL REFERENCES via(id),
 
-    -- 2. CANONICAL CLASSIFICATION (RESOLVED TRUTH)
-    categoria_id INTEGER NOT NULL,
-    subcategoria_id INTEGER NOT NULL,
-    familia_id INTEGER NOT NULL,
-    via_administracion_id INTEGER NOT NULL
-        REFERENCES via_administracion(id),
-
-    -- Enforce taxonomy hierarchy
-
-    CONSTRAINT productos_categoria_fk
-        FOREIGN KEY (categoria_id)
-        REFERENCES categoria(id),
-
-    CONSTRAINT productos_categoria_subcategoria_fk
-        FOREIGN KEY (categoria_id, subcategoria_id)
-        REFERENCES subcategoria(categoria_id, id),
-
-    CONSTRAINT productos_categoria_subcategoria_familia_fk
-        FOREIGN KEY (categoria_id, subcategoria_id, familia_id)
-        REFERENCES familia(categoria_id, subcategoria_id, id),
-
-    -- 4. COMMERCIAL PRESENTATION
     marca TEXT,
     nombre TEXT NOT NULL,
-    unidades_por_envase INTEGER NOT NULL,
+    unidades_por_envase INTEGER,
     comentarios TEXT,
     foto_url TEXT,
 
-    -- 5. PHARMACEUTICAL DEFINITION
     principio_activo TEXT,
     concentracion TEXT,
     forma_farmaceutica TEXT,
 
-    -- 6. REGULATORY FLAGS
     sustancia_controlada BOOLEAN NOT NULL DEFAULT FALSE,
     requiere_serializacion BOOLEAN NOT NULL DEFAULT FALSE,
 
-    -- 7. COMMERCIAL & OPERATIONAL
     pvp NUMERIC(10,2),
-    stock INTEGER NOT NULL DEFAULT 0
+    stock INTEGER
 );
